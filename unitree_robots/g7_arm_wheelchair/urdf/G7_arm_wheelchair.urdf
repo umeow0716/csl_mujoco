@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="G7_arm_wheelchair">
+  <mujoco>
+  <compiler
+    meshdir="../meshes"
+    balanceinertia="true"
+    discardvisual="false" />
+  </mujoco>
+  <link
+    name="AMR_base_link">
+    <inertial>
+      <origin
+        xyz="0.01809495 0.00346995 -0.00482292"
+        rpy="0 0 0" />
+      <mass
+        value="40.00000000" />
+      <inertia
+        ixx="0.62303071"
+        ixy="0.00015279"
+        ixz="0.01722407"
+        iyy="0.92096563"
+        iyz="-0.01209508"
+        izz="1.23411295" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/AMR_base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/AMR_collision.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="arm_link">
+    <inertial>
+      <origin
+        xyz="0.03614545 -0.00000317 0.05135422"
+        rpy="0 0 0" />
+      <mass
+        value="10.00000000" />
+      <inertia
+        ixx="0.87452839"
+        ixy="-0.00000629"
+        ixz="0.05468077"
+        iyy="0.95354388"
+        iyz="-0.00000413"
+        izz="0.20297959" />
+    </inertial>
+
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/arm_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.16 0 -0.545"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/arm_collision.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="AMR_arm_J"
+    type="fixed">
+    <origin
+      xyz="-0.16139 0 0.54534"
+      rpy="0 0 0" />
+    <parent
+      link="AMR_base_link" />
+    <child
+      link="arm_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="wheelchair_base_link">
+    <inertial>
+      <origin
+        xyz="-0.06158659 -0.00662311 0.07561156"
+        rpy="0 0 0" />
+      <mass
+        value="60.00000000" />
+      <inertia
+        ixx="3.82247384"
+        ixy="0.03718492"
+        ixz="-0.99542033"
+        iyy="4.10517780"
+        iyz="-0.12150664"
+        izz="3.68493511" />
+    </inertial>
+
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/wheelchair_base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="-0.57 -0.04 -0.3136"
+        rpy="0 0 0.07" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/wheelchair_base_link_collision.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="arm_wheelchair_J"
+    type="fixed">
+    <origin
+      xyz="0.72627 0 -0.23586"
+      rpy="0 0 -0.069813" />
+    <parent
+      link="arm_link" />
+    <child
+      link="wheelchair_base_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="wheelchair_FL_link">
+    <inertial>
+      <origin
+        xyz="-0.00669370 -0.00030195 -0.03528150"
+        rpy="0 0 0" />
+      <mass
+        value="0.30000000" />
+      <inertia
+        ixx="0.00140980"
+        ixy="0.00000287"
+        ixz="0.00021633"
+        iyy="0.00129176"
+        iyz="0.00001101"
+        izz="0.00026023" />
+    </inertial>
+
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/wheelchair_FL_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    
+  </link>
+  <joint
+    name="wheelchair_FL_J"
+    type="revolute">
+    <origin
+      xyz="0.25067 0.28905 -0.25051"
+      rpy="0 0 0.069813" />
+    <parent
+      link="wheelchair_base_link" />
+    <child
+      link="wheelchair_FL_link" />
+    <axis
+      xyz="0.069756 0 -0.99756" />
+  </joint>
+  <link
+    name="wheelchair_FLW_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.50000000" />
+      <inertia
+        ixx="0.00151566"
+        ixy="0.00000000"
+        ixz="-0.00000003"
+        iyy="0.00297133"
+        iyz="0.00000000"
+        izz="0.00151563" />
+    </inertial>
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/wheelchair_FLW_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="-1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.099" length="0.025"/>
+      </geometry>
+    </collision> 
+  </link>
+  <joint
+    name="wheelchair_FLW_J"
+    type="revolute">
+    <origin
+      xyz="-0.031613 0 -0.12134"
+      rpy="0 0 0" />
+    <parent
+      link="wheelchair_FL_link" />
+    <child
+      link="wheelchair_FLW_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="wheelchair_FR_link">
+    <inertial>
+      <origin
+        xyz="-0.00669369 -0.00030196 -0.03528157"
+        rpy="0 0 0" />
+      <mass
+        value="0.30000000" />
+      <inertia
+        ixx="0.00140981"
+        ixy="0.00000287"
+        ixz="0.00021633"
+        iyy="0.00129176"
+        iyz="0.00001101"
+        izz="0.00026023" />
+    </inertial>
+``
+
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/wheelchair_FR_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    
+  </link>
+  <joint
+    name="wheelchair_FR_J"
+    type="revolute">
+    <origin
+      xyz="0.288458061311074 -0.251351794360144 -0.250510711215681"
+      rpy="0 0 0.0698131700797799" />
+    <parent
+      link="wheelchair_base_link" />
+    <child
+      link="wheelchair_FR_link" />
+    <axis
+      xyz="0.0697564737441193 0 -0.997564050259792" />
+  </joint>
+  <link
+    name="wheelchair_FRW_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.50000000" />
+      <inertia
+        ixx="0.00151566"
+        ixy="0.00000000"
+        ixz="-0.00000003"
+        iyy="0.00297133"
+        iyz="0.00000000"
+        izz="0.00151563" />
+    </inertial>
+
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/wheelchair_FRW_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="-1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.099" length="0.025"/>
+      </geometry>
+    </collision> 
+  </link>
+  <joint
+    name="wheelchair_FRW_J"
+    type="revolute">
+    <origin
+      xyz="-0.0316127012317233 0 -0.121340692388977"
+      rpy="0 0 0" />
+    <parent
+      link="wheelchair_FR_link" />
+    <child
+      link="wheelchair_FRW_link" />
+    <axis
+      xyz="0 0.999999999999955 0" />
+  </joint>
+  <link
+    name="wheelchair_RLW_link">
+    <inertial>
+      <origin
+        xyz="0.00001633 -0.00015277 0.00000889"
+        rpy="0 0 0" />
+      <mass
+        value="1.00000000" />
+      <inertia
+        ixx="0.02845442"
+        ixy="0.00000013"
+        ixz="0.00000047"
+        iyy="0.05638375"
+        iyz="0.00000006"
+        izz="0.02845217" />
+    </inertial>
+
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/wheelchair_RLW_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="-1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.294" length="0.059"/>
+      </geometry>
+    </collision> 
+  </link>
+  <joint
+    name="wheelchair_RLW_J"
+    type="revolute">
+    <origin
+      xyz="-0.193198001154472 0.279615553806092 -0.17647944707263"
+      rpy="0 0 0.0698131700797799" />
+    <parent
+      link="wheelchair_base_link" />
+    <child
+      link="wheelchair_RLW_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="wheelchair_RRW_link">
+    <inertial>
+      <origin
+        xyz="0.00001633 0.00015277 -0.00000889"
+        rpy="0 0 0" />
+      <mass
+        value="1.00000000" />
+      <inertia
+        ixx="0.02845442"
+        ixy="-0.00000013"
+        ixz="-0.00000047"
+        iyy="0.05638375"
+        iyz="0.00000007"
+        izz="0.02845217" />
+    </inertial>
+
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/wheelchair_RRW_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+     <collision>
+      <origin xyz="0 0 0" rpy="-1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.294" length="0.059"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheelchair_RRW_J"
+    type="revolute">
+    <origin
+      xyz="-0.152402952832757 -0.303782326723057 -0.176479378999602"
+      rpy="0 0 0.0698131700797799" />
+    <parent
+      link="wheelchair_base_link" />
+    <child
+      link="wheelchair_RRW_link" />
+    <axis
+      xyz="0 0.999999999999954 0" />
+  </joint>
+  <link
+    name="AMR_FL_link">
+    <inertial>
+      <origin
+        xyz="0.00000000 -0.00166139 -0.04674468"
+        rpy="0 0 0" />
+      <mass
+        value="0.30000000" />
+      <inertia
+        ixx="0.00117646"
+        ixy="0.00000000"
+        ixz="0.00000000"
+        iyy="0.00105740"
+        iyz="0.00003180"
+        izz="0.00051559" />
+    </inertial>
+
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/AMR_FL_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+
+  </link>
+  <joint
+    name="AMR_FL_J"
+    type="revolute">
+    <origin
+      xyz="0.198 0.129999999999956 -0.056600604850529"
+      rpy="0 0 0" />
+    <parent
+      link="AMR_base_link" />
+    <child
+      link="AMR_FL_link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="AMR_FLW_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.00000000" />
+      <inertia
+        ixx="0.00118731"
+        ixy="0.00000000"
+        ixz="0.00000002"
+        iyy="0.00219403"
+        iyz="0.00000000"
+        izz="0.00118753" />
+    </inertial>
+
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/AMR_FLW_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="-1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.05203" length="0.036"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="AMR_FLW_J"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.0525"
+      rpy="0 0 0" />
+    <parent
+      link="AMR_FL_link" />
+    <child
+      link="AMR_FLW_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="AMR_FR_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.30000000" />
+      <inertia
+        ixx="0.00117647"
+        ixy="0.00000000"
+        ixz="0.00000000"
+        iyy="0.00105741"
+        iyz="-0.00003179"
+        izz="0.00051559" />
+    </inertial>
+
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/AMR_FR_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+
+  </link>
+  <joint
+    name="AMR_FR_J"
+    type="revolute">
+    <origin
+      xyz="0.197999999999997 -0.130000000000005 -0.056600604850529"
+      rpy="0 0 0" />
+    <parent
+      link="AMR_base_link" />
+    <child
+      link="AMR_FR_link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="AMR_FRW_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.00000000" />
+      <inertia
+        ixx="0.00118731"
+        ixy="0.00000000"
+        ixz="-0.00000002"
+        iyy="0.00219403"
+        iyz="0.00000000"
+        izz="0.00118753" />
+    </inertial>
+
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/AMR_FRW_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="-1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.05203" length="0.036"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="AMR_FRW_J"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.0525"
+      rpy="0 0 0" />
+    <parent
+      link="AMR_FR_link" />
+    <child
+      link="AMR_FRW_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="AMR_RL_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.30000000" />
+      <inertia
+        ixx="0.00117647"
+        ixy="0.00000000"
+        ixz="0.00000000"
+        iyy="0.00105741"
+        iyz="0.00003180"
+        izz="0.00051559" />
+    </inertial>
+
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/AMR_RL_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+ 
+  </link>
+  <joint
+    name="AMR_RL_J"
+    type="revolute">
+    <origin
+      xyz="-0.198 0.13 -0.056601"
+      rpy="0 0 0" />
+    <parent
+      link="AMR_base_link" />
+    <child
+      link="AMR_RL_link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="AMR_RLW_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.00000000" />
+      <inertia
+        ixx="0.00118731"
+        ixy="0.00000000"
+        ixz="0.00000002"
+        iyy="0.00219403"
+        iyz="0.00000000"
+        izz="0.00118753" />
+    </inertial>
+
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/AMR_RLW_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="-1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.05203" length="0.036"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="AMR_RLW_J"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.0525"
+      rpy="0 0 0" />
+    <parent
+      link="AMR_RL_link" />
+    <child
+      link="AMR_RLW_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="AMR_RR_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.30000000" />
+      <inertia
+        ixx="0.00117647"
+        ixy="0.00000000"
+        ixz="0.00000000"
+        iyy="0.00105740"
+        iyz="-0.00003179"
+        izz="0.00051559" />
+    </inertial>
+
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/AMR_RR_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="AMR_RR_J"
+    type="revolute">
+    <origin
+      xyz="-0.198 -0.13 -0.056601"
+      rpy="0 0 0" />
+    <parent
+      link="AMR_base_link" />
+    <child
+      link="AMR_RR_link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="AMR_RRW_link">
+    <inertial>
+      <origin
+        xyz="0.00001633 0.00015277 -0.00000889"
+        rpy="0 0 0" />
+      <mass
+        value="1.00000000" />
+      <inertia
+        ixx="0.02845442"
+        ixy="-0.00000013"
+        ixz="-0.00000047"
+        iyy="0.05638375"
+        iyz="0.00000007"
+        izz="0.02845217" />
+    </inertial>
+
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://G7_arm_wheelchair/meshes/AMR_RRW_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="-1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.05203" length="0.036"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="AMR_RRW_J"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.0525"
+      rpy="0 0 0" />
+    <parent
+      link="AMR_RR_link" />
+    <child
+      link="AMR_RRW_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+</robot>

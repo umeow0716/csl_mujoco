@@ -1,0 +1,206 @@
+<mujoco model="G7_arm_wheelchair">
+  <compiler angle="radian" meshdir="meshes"/>
+
+  <default>
+      <default class="g7_amr_cart">
+          <geom friction="0.4" margin="0.001" condim="1"/>
+          <joint damping="0.1" armature="0.01" frictionloss="0.2"/>
+          <motor ctrlrange="-23.7 23.7"/>
+          <default class="visual">
+              <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+          </default>
+          <default class="rotate">
+              <joint axis="0 0 1"/>
+              <motor ctrlrange="-23.7 23.7"/>
+          </default>
+          <default class="collision">
+              <geom group="3" type="mesh" rgba="1 0 0 0.3" />
+              <default class="wheel">
+              <geom priority="1" condim="3"
+                  friction="0.8 0.02 0.01"/>
+              </default>
+              <default class="front_chair_wheel">
+                <geom priority="1" condim="3"
+                    friction="0.6 0.01 0.002"/>
+              </default>
+              <default class="rear_chair_wheel">
+                <geom priority="1" condim="3"
+                    friction="1.0 0.03 0.005"/>
+              </default>
+          </default>
+      </default>
+  </default>
+
+  <asset>
+    <mesh name="AMR_base_link" file="AMR_base_link.STL"/>
+    <mesh name="AMR_collision" file="AMR_collision.stl"/>
+    <mesh name="arm_link" file="arm_link.STL"/>
+    <mesh name="arm_collision" file="arm_collision.stl"/>
+    <mesh name="wheelchair_base_link" file="wheelchair_base_link.STL"/>
+    <mesh name="wheelchair_base_link_collision" file="wheelchair_base_link_collision.STL"/>
+    <mesh name="wheelchair_FL_link" file="wheelchair_FL_link.STL"/>
+    <mesh name="wheelchair_FLW_link" file="wheelchair_FLW_link.STL"/>
+    <mesh name="wheelchair_FR_link" file="wheelchair_FR_link.STL"/>
+    <mesh name="wheelchair_FRW_link" file="wheelchair_FRW_link.STL"/>
+    <mesh name="wheelchair_RLW_link" file="wheelchair_RLW_link.STL"/>
+    <mesh name="wheelchair_RRW_link" file="wheelchair_RRW_link.STL"/>
+    <mesh name="AMR_FL_link" file="AMR_FL_link.STL"/>
+    <mesh name="AMR_FLW_link" file="AMR_FLW_link.STL"/>
+    <mesh name="AMR_FR_link" file="AMR_FR_link.STL"/>
+    <mesh name="AMR_FRW_link" file="AMR_FRW_link.STL"/>
+    <mesh name="AMR_RL_link" file="AMR_RL_link.STL"/>
+    <mesh name="AMR_RLW_link" file="AMR_RLW_link.STL"/>
+    <mesh name="AMR_RR_link" file="AMR_RR_link.STL"/>
+    <mesh name="AMR_RRW_link" file="AMR_RRW_link.STL"/>
+  </asset>
+
+  <worldbody>
+    <body name="AMR_base_link" pos="0 0 0.3" childclass="g7_amr_cart">
+        <inertial pos="0.00551370 0.00325048 0.00318185" quat="1 0 0 0" mass="40.0" diaginertia="0.62303071 0.92096563 1.23411295" />
+        <freejoint />
+        <site name="imu" pos="0 0 0" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="AMR_base_link"/>
+        <geom type="mesh" rgba="0.792157 0.819608 0.933333 1" mesh="AMR_collision" class="collision"/>
+        <body name="arm_link" >
+          <inertial pos="0.03614545 -0.00000317 0.05135422" quat="1 0 0 0" mass="10.0" diaginertia="0.87452839 0.95354388 0.20297959" />
+          <geom pos="-0.16139 0 0.54534" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="arm_link"/>
+          <geom pos="-0.00139 0 0.00034" quat="1 0 0 0" type="mesh" rgba="0.792157 0.819608 0.933333 1" mesh="arm_collision" class="collision"/>
+        </body>
+        <body name="wheelchair_base_link">
+          <inertial pos="-0.06158659 -0.00662311 0.07561156" quat="1 0 0 0" mass="60.0" diaginertia="3.82247384 4.10517780 3.68493511" />
+          <geom pos="0.56488 0 0.30948" quat="0.999391 0 0 -0.0348994" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="wheelchair_base_link"/>
+          <geom pos="-0.00652177 -0.000141469 -0.00412" quat="1 0 0 9.35e-05" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="wheelchair_base_link_collision" class="collision"/>
+        </body>
+        <body name="wheelchair_FL_link" pos="0.835102 0.27086 0.05897">
+          <inertial pos="-0.0066937 -0.00030195 -0.0352815" quat="0.995822 0.0034289 -0.0899135 0.015591" mass="0.3" diaginertia="0.00144931 0.00129171 0.000220769"/>
+          <joint name="wheelchair_FL_J" pos="0 0 0" axis="0.0697563 0 -0.997564"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="wheelchair_FL_link"/>
+          <body name="wheelchair_FLW_link" pos="-0.031613 0 -0.12134">
+            <inertial pos="0 0 0" quat="0.680193 0.193229 0.193229 0.680193" mass="0.5" diaginertia="0.00297133 0.00151568 0.00151561"/>
+            <joint name="wheelchair_FLW_J" pos="0 0 0" axis="0 1 0"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="wheelchair_FLW_link"/>
+            <geom size="0.099 0.0125" quat="0.707105 -0.707108 0 0" type="cylinder" rgba="0.752941 0.752941 0.752941 1" class="rear_chair_wheel"/>
+          </body>
+        </body>
+        <body name="wheelchair_FR_link" pos="0.835102 -0.270861 0.0589693" quat="1 0 0 8.50399e-08">
+          <inertial pos="-0.00669369 -0.00030196 -0.0352816" quat="0.995822 0.003429 -0.0899128 0.0155901" mass="0.3" diaginertia="0.00144932 0.00129171 0.000220769"/>
+          <joint name="wheelchair_FR_J" pos="0 0 0" axis="0.0697565 0 -0.997564"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="wheelchair_FR_link"/>
+          <body name="wheelchair_FRW_link" pos="-0.0316127 0 -0.121341">
+            <inertial pos="0 0 0" quat="0.680193 0.193229 0.193229 0.680193" mass="0.5" diaginertia="0.00297133 0.00151568 0.00151561"/>
+            <joint name="wheelchair_FRW_J" pos="0 0 0" axis="0 1 0"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="wheelchair_FRW_link"/>
+            <geom size="0.099 0.0125" quat="0.707105 -0.707108 0 0" type="cylinder" rgba="0.752941 0.752941 0.752941 1" class="rear_chair_wheel"/>
+          </body>
+        </body>
+        <body name="wheelchair_RLW_link" pos="0.391658 0.292411 0.133001" quat="1 0 0 8.50399e-08">
+          <inertial pos="1.633e-05 -0.00015277 8.89e-06" quat="0.703651 -0.0698429 -0.0698433 0.703647" mass="1" diaginertia="0.0563838 0.0284545 0.0284521"/>
+          <joint name="wheelchair_RLW_J" pos="0 0 0" axis="0 -1 0"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="wheelchair_RLW_link"/>
+          <geom size="0.294 0.0295" quat="0.707105 -0.707108 0 0" type="cylinder" rgba="0.752941 0.752941 0.752941 1" class="front_chair_wheel"/>
+        </body>
+        <body name="wheelchair_RRW_link" pos="0.391658 -0.292411 0.133001" quat="1 0 0 8.50399e-08">
+          <inertial pos="1.633e-05 0.00015277 -8.89e-06" quat="0.703647 0.0698438 0.0698424 0.703651" mass="1" diaginertia="0.0563838 0.0284545 0.0284521"/>
+          <joint name="wheelchair_RRW_J" pos="0 0 0" axis="0 1 0"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="wheelchair_RRW_link"/>
+          <geom size="0.294 0.0295" quat="0.707105 -0.707108 0 0" type="cylinder" rgba="0.752941 0.752941 0.752941 1" class="front_chair_wheel"/>
+        </body>
+        <body name="AMR_FL_link" pos="0.198 0.13 -0.0566006">
+          <inertial pos="0 -0.00166139 -0.0467447" quat="0.999573 0.0292082 0 0" mass="0.3" diaginertia="0.00117646 0.00105926 0.00051373"/>
+          <joint name="AMR_FL_J" pos="0 0 0" axis="0 0 -1"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="AMR_FL_link"/>
+          <body name="AMR_FLW_link" pos="0 0 -0.0525">
+            <inertial pos="0 0 0" quat="0.477021 0.521969 0.521969 0.477021" mass="1" diaginertia="0.00219403 0.00118753 0.00118731"/>
+            <joint name="AMR_FLW_J" pos="0 0 0" axis="0 1 0"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="AMR_FLW_link"/>
+            <geom size="0.05203 0.018" quat="0.707105 -0.707108 0 0" type="cylinder" rgba="0.752941 0.752941 0.752941 1" class="wheel"/>
+          </body>
+        </body>
+        <body name="AMR_FR_link" pos="0.198 -0.13 -0.0566006">
+          <inertial pos="0 0 0" quat="0.999574 -0.0291986 0 0" mass="0.3" diaginertia="0.00117647 0.00105927 0.000513731"/>
+          <joint name="AMR_FR_J" pos="0 0 0" axis="0 0 -1"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="AMR_FR_link"/>
+          <body name="AMR_FRW_link" pos="0 0 -0.0525">
+            <inertial pos="0 0 0" quat="0.521969 0.477021 0.477021 0.521969" mass="1" diaginertia="0.00219403 0.00118753 0.00118731"/>
+            <joint name="AMR_FRW_J" pos="0 0 0" axis="0 1 0"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="AMR_FRW_link"/>
+            <geom size="0.05203 0.018" quat="0.707105 -0.707108 0 0" type="cylinder" rgba="0.752941 0.752941 0.752941 1" class="wheel"/>
+          </body>
+        </body>
+        <body name="AMR_RL_link" pos="-0.198 0.13 -0.056601">
+          <inertial pos="0 0 0" quat="0.999573 0.0292077 0 0" mass="0.3" diaginertia="0.00117647 0.00105927 0.00051373"/>
+          <joint name="AMR_RL_J" pos="0 0 0" axis="0 0 -1"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="AMR_RL_link"/>
+          <body name="AMR_RLW_link" pos="0 0 -0.0525">
+            <inertial pos="0 0 0" quat="0.477021 0.521969 0.521969 0.477021" mass="1" diaginertia="0.00219403 0.00118753 0.00118731"/>
+            <joint name="AMR_RLW_J" pos="0 0 0" axis="0 1 0"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="AMR_RLW_link"/>
+            <geom size="0.05203 0.018" quat="0.707105 -0.707108 0 0" type="cylinder" rgba="0.752941 0.752941 0.752941 1" class="wheel"/>
+          </body>
+        </body>
+        <body name="AMR_RR_link" pos="-0.198 -0.13 -0.056601">
+          <inertial pos="0 0 0" quat="0.999574 -0.0291991 0 0" mass="0.3" diaginertia="0.00117647 0.00105926 0.000513731"/>
+          <joint name="AMR_RR_J" pos="0 0 0" axis="0 0 -1"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="AMR_RR_link"/>
+          <body name="AMR_RRW_link" pos="0 0 -0.0525">
+            <inertial pos="1.633e-05 0.00015277 -8.89e-06" quat="0.703647 0.0698438 0.0698424 0.703651" mass="1" diaginertia="0.0563838 0.0284545 0.0284521"/>
+            <joint name="AMR_RRW_J" pos="0 0 0" axis="0 1 0"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="AMR_RRW_link"/>
+            <geom size="0.05203 0.018" quat="0.707105 -0.707108 0 0" type="cylinder" rgba="0.752941 0.752941 0.752941 1" class="wheel"/>
+          </body>
+        </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <motor class="rotate" name="FL_motor" joint="AMR_FL_J" />
+    <motor class="rotate" name="FR_motor" joint="AMR_FR_J" />
+    <motor class="rotate" name="RL_motor" joint="AMR_RL_J" />
+    <motor class="rotate" name="RR_motor" joint="AMR_RR_J" />
+
+    <motor ctrlrange="-15 15" name="FL_wheel" joint="AMR_FLW_J" />
+    <motor ctrlrange="-15 15" name="FR_wheel" joint="AMR_FRW_J" />
+    <motor ctrlrange="-15 15" name="RL_wheel" joint="AMR_RLW_J" />
+    <motor ctrlrange="-15 15" name="RR_wheel" joint="AMR_RRW_J" />
+  </actuator>
+
+  <sensor>
+    <jointpos name="FL_Z_pos" joint="AMR_FL_J" />
+    <jointpos name="FR_Z_pos" joint="AMR_FR_J" />
+    <jointpos name="RL_Z_pos" joint="AMR_RL_J" />
+    <jointpos name="RR_Z_pos" joint="AMR_RR_J" />
+
+    <jointpos name="FL_Y_pos" joint="AMR_FLW_J" />
+    <jointpos name="FR_Y_pos" joint="AMR_FRW_J" />
+    <jointpos name="RL_Y_pos" joint="AMR_RLW_J" />
+    <jointpos name="RR_Y_pos" joint="AMR_RRW_J" />
+
+    <jointvel name="FL_Z_vel" joint="AMR_FL_J" />
+    <jointvel name="FR_Z_vel" joint="AMR_FR_J" />
+    <jointvel name="RL_Z_vel" joint="AMR_RL_J" />
+    <jointvel name="RR_Z_vel" joint="AMR_RR_J" />
+
+    <jointvel name="FL_Y_vel" joint="AMR_FLW_J" />
+    <jointvel name="FR_Y_vel" joint="AMR_FRW_J" />
+    <jointvel name="RL_Y_vel" joint="AMR_RLW_J" />
+    <jointvel name="RR_Y_vel" joint="AMR_RRW_J" />
+
+    <jointactuatorfrc name="FL_Z_torque" joint="AMR_FL_J" />
+    <jointactuatorfrc name="FR_Z_torque" joint="AMR_FR_J" />
+    <jointactuatorfrc name="RL_Z_torque" joint="AMR_RL_J" />
+    <jointactuatorfrc name="RR_Z_torque" joint="AMR_RR_J" />
+
+    <jointactuatorfrc name="FL_Y_torque" joint="AMR_FLW_J" noise="0.01"/>
+    <jointactuatorfrc name="FR_Y_torque" joint="AMR_FRW_J" noise="0.01"/>
+    <jointactuatorfrc name="RL_Y_torque" joint="AMR_RLW_J" noise="0.01"/>
+    <jointactuatorfrc name="RR_Y_torque" joint="AMR_RRW_J" noise="0.01"/>
+
+    <framequat name="imu_quat" objtype="site" objname="imu" noise="0.0"/>
+    <gyro name="imu_gyro" site="imu" noise="0.0"/>
+    <accelerometer name="imu_acc" site="imu" />
+
+    <framepos name="frame_pos" objtype="site" objname="imu" />
+    <framelinvel name="frame_lin_vel" objtype="site" objname="imu" />
+    <frameangvel name="frame_ang_vel" objtype="site" objname="imu" />
+  </sensor>
+</mujoco>
