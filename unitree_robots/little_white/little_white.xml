@@ -11,10 +11,10 @@
       </default>
       <default class="hip">
         <default class="front_hip">
-          <joint range="-1.5708 3.4907" damping="0.29" armature="0.0027"/>
+          <joint range="-1.5708 1.5708" damping="0.29" armature="0.0027"/>
         </default>
         <default class="back_hip">
-          <joint range="-0.5236 4.5379" damping="0.29" armature="0.0027"/>
+          <joint range="-1.5708 1.5708" damping="0.29" armature="0.0027"/>
         </default>
       </default>
       <default class="knee">
